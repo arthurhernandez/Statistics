@@ -1,0 +1,124 @@
+---
+title: "ProblemSet6"
+author: Arthur Hernandez
+output: html_document
+---
+
+##Problem Set 6
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+pulses <- scan("https://mtrosset.pages.iu.edu/StatInfeR/Data/pulses.dat")
+```
+```{r}
+sample <- scan("https://mtrosset.pages.iu.edu/StatInfeR/Data/sample774.dat")
+```
+```{r}
+summary(pulses)
+```
+Question #2
+part a:
+```{r}
+plot(ecdf(pulses), main = "Empirical CDF for Peruvian Indian Pulses",xlab = "Pulse rate")
+```
+
+part b:
+```{r}
+mean(pulses)
+```
+```{r}
+mean((pulses - mean(pulses))^2)
+var(pulses)
+```
+
+part c:
+```{r}
+median(pulses)
+```
+```{r}
+IQR(pulses)
+```
+
+part d:
+```{r}
+IQR(pulses)/sqrt(var(pulses))
+```
+
+part e:
+```{r}
+boxplot(pulses,ylab = "Pulse Rate", main = "Box Plot of Peruvian Indian Pulse Rates")
+```
+
+part f:
+```{r}
+qqnorm(pulses,ylab = "Pulse Rate", xlab = "Theorectial Quantity",main = "Normal Probability Plot of Peruvian Indian Pulse Rates")
+```
+
+part g:
+```{r}
+plot(density(pulses), main = "Density Plot for Peruvian Indian Pulses",xlab = "Pulse rate")
+```
+
+part h:
+This sample was not drawn from a normal distribution. the QQ plot is not close to being a straight line.
+
+Question #3
+
+part a:
+```{r}
+plot(ecdf(sample),main = "Empirical CDF Graph For Peruvian Indian Pulses",xlab = "Pulse Rate")
+```
+
+part b:
+```{r}
+#mean
+mean(sample)
+var(sample)
+median(sample)
+IQR(sample)
+```
+
+part c:
+```{r}
+sqrt(var(sample))
+IQR(sample)
+
+```
+
+part d:
+```{r}
+plot(qqnorm(sample), main = "Normal Prbability Plot For Some Sample",ylab = "Sample quantities",xlab = "Theoretical Quantities")
+```
+
+No, I do not think x-> was drawn from a normal distribution. The distribution is not linear.
+
+part e:
+```{r}
+plot(qqnorm(log(sample)), main = "Normal Prbability Plot For Some Sample",ylab = "Sample Quantities", xlab = "Log of theoretical Quantities")
+```
+
+I believe that with more data, this distribution would be a normal distribution. The graph is close to linear.
+
+Question 4:
+
+part a:
+
+E(x) = ((-2) * 0.3) + ((-1) * 0.6) + (12 * 0.1) = 0
+
+part b:
+
+V(x) = ((-2)^2 * 0.3) + ((-1)^2 * 0.6) + (12^2 * 0.1) = 1.2 + .6 + 14.4 = 16.2
+
+part c:
+
+since E(´x) = E(x), E(´x) = 0
+
+part d:
+Var(x) = Varx/100 = .162
+
+part e:
+```{r}
+1-pnorm(.5,0,sqrt(0.162))
+```
